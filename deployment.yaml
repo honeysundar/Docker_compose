@@ -1,0 +1,22 @@
+# app-deployment.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  namespace: inhabit
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: application
+  template:
+    metadata:
+      labels:
+        app: application
+    spec:
+      containers:
+      - name: application
+        image: my-app:local
+        ports:
+        - containerPort: 8080
+
